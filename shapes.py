@@ -1,17 +1,19 @@
-
-class Shape:
+from coord_space import CoordinateSpace
+class Shape(CoordinateSpace):
 
     #Constructor
     def __init__(self, start_x, start_y):
-        self.setX(start_x)
-        self.setY(start_y)
-
+        if start_x < self.getCoordX() and start_y < self.getCoordY():
+            self.setX(start_x)  
+            self.setY(start_y)
+        else:
+            raise OutOfBoundShapeError
     #Get X coordinate
-    def returnX(self):
+    def getX(self):
         return self.x
 
     #Get Y coordinate
-    def returnY(self):
+    def getY(self):
         return self.y
     
     #Set X coordinate
@@ -37,4 +39,14 @@ class Shape:
     def draw_shape(self):
         pass
 
-    
+    def check_bounds(self):
+        pass
+
+
+class ShapeErrors(Exception):
+    def __init__(self):
+        self.msg = "An error occured in Shapes"
+
+class OutOfBoundShapeError(ShapeErrors):
+    def __init__(self):
+        self.msg = "Shape cannot be created outside of coordinate space"
