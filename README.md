@@ -15,3 +15,8 @@ Tests for the same exist
 
 Functionality being worked on was checking for collisons upon moving. The approach being taken was to compare the object being moved to every other existing Shape and check if there is a collison. 
 
+# Running code
+
+The repository has no external dependencies
+The only change required would be to change the syspath values in the testing_ files to your own path
+
