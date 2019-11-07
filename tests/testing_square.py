@@ -5,21 +5,31 @@ sys.path.append(os.path.abspath("/Users/anantakash/Shapes/"))
 
 from square import Square
 from coord_space import CoordinateSpace
-class RectangleTests(unittest.TestCase):
+from shapes import OutOfBoundShapeError
+CoordinateSpace(10,20)
+class SquareTests(unittest.TestCase):
     #test shape creationg
+
     def test_creation(self):
         #self.assertEqual(Shape(),)
-        CoordinateSpace(10,20)
+        
         square = Square(1,2,1)
 
         self.assertEqual(square.getX(), 1)
         self.assertEqual(square.getY(), 2)
+    
+    def test_creation_fail(self):
+        with self.assertRaises(OutOfBoundShapeError):
+            Square(10,20,1)
     # #shape move
     # def test_move(self):
-    #     shape = Shape(3,4)
-    #     shape.move(4,6)
-    #     self.assertEqual(shape.returnX(), 4)
-    #     self.assertEqual(shape.returnY(), 6)
+    #     square = Square(3,4,2)
+    #     square_2 = Square(1,1,2)
+    #     #print(square.check_collision(5,5,2,square_2))
+
+    #     square_2.move(2,2)
+    #     # self.assertEqual(square.getX(), 4)
+    #     # self.assertEqual(square.getY(), 6)
 
     #shape resizing
     def test_resize(self):

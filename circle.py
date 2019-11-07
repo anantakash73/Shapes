@@ -2,9 +2,10 @@ from shapes import Shape, ShapeErrors, OutOfBoundShapeError
 
 class Circle(Shape):
     def __init__(self, start_x, start_y, radius):
-        Shape.__init__(self,start_x, start_y)
+        Shape.__init__(self,start_x, start_y,"circle")
         if self.check_bounds(radius):
             self.setRadius(radius)
+            
         else:
             raise OutOfBoundShapeError
 

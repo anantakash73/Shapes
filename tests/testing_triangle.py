@@ -5,6 +5,7 @@ sys.path.append(os.path.abspath("/Users/anantakash/Shapes/"))
 
 from triangle import Triangle
 from coord_space import CoordinateSpace
+from shapes import OutOfBoundShapeError
 class RectangleTests(unittest.TestCase):
     #test shape creationg
     def test_creation(self):
@@ -13,7 +14,11 @@ class RectangleTests(unittest.TestCase):
         triangle = Triangle(0,0,0,5,5,0)
 
         self.assertEqual(triangle.getX(), 0)
-        self.assertEqual(triangle.getY(), 1)
+        self.assertEqual(triangle.getY(), 0)
+    
+    def test_creation_fail(self):
+        with self.assertRaises(OutOfBoundShapeError):
+            Triangle(10,20,11,10,23,45)
     # #shape move
     # def test_move(self):
     #     shape = Shape(3,4)

@@ -5,6 +5,7 @@ sys.path.append(os.path.abspath("/Users/anantakash/Shapes/"))
 
 from circle import Circle
 from coord_space import CoordinateSpace
+from shapes import OutOfBoundShapeError
 class CircleTests(unittest.TestCase):
     #test shape creationg
     def test_creation(self):
@@ -15,6 +16,10 @@ class CircleTests(unittest.TestCase):
         self.assertEqual(circle.getX(), 3)
         self.assertEqual(circle.getY(), 4)
         self.assertEqual(circle.getRadius(),1)
+
+    def test_creation_fail(self):
+        with self.assertRaises(OutOfBoundShapeError):
+            Circle(10,20,2)
     # #shape move
     # def test_move(self):
     #     shape = Shape(3,4)

@@ -2,7 +2,7 @@ from shapes import Shape,OutOfBoundShapeError
 
 class Triangle(Shape):
     def __init__(self, init_x_1,init_y_1,init_x_2,init_y_2,init_x_3,init_y_3):
-        Shape.__init__(self,init_x_1,init_y_1)
+        Shape.__init__(self,init_x_1,init_y_1,"triangle")
         if self.check_bounds(init_x_1,init_y_1,init_x_2,init_y_2,init_x_3,init_y_3):
             self.setPoints(init_x_1,init_y_1,init_x_2,init_y_2,init_x_3,init_y_3)
         else:

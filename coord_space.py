@@ -2,7 +2,7 @@
 #Class implementation of coordinate space
 # For simplicity sake, let's restrict our coordinate space to first quadrant
 # i.e. only positive values of x and y are accepted
-class CoordinateSpace:
+class CoordinateSpace(object):
     class __CoordinateSpace:
         def __init__(self, init_x, init_y):
             self.coord_x = init_x
@@ -16,14 +16,20 @@ class CoordinateSpace:
                 # raise error
                 raise PositiveCoordSpaceError
         else:
+            raise DuplicateCoordSpaceError
             # raise error as there cannot be two coordinate spaces
-                raise DuplicateCoordSpaceError
+                
 
     def getCoordX(self):
         return self.instance.coord_x
 
     def getCoordY(self):
-        return self.instance.coord_y  
+        return self.instance.coord_y
+    
+    
+    def deleteInstance(self):
+        self.instance = None
+    
 
 
 class CoordinateSpaceError(Exception):
@@ -38,4 +44,10 @@ class DuplicateCoordSpaceError(CoordinateSpaceError):
 class PositiveCoordSpaceError(CoordinateSpaceError):
     def __init__(self):
         self.msg = "X and Y values must be positive"
-        
+
+
+
+def check_point_collision(point, x, y, size):
+    if point[0] >= x and point[0] <= x + size and point[1] >= y and point[1] <= y + size:
+        return True
+    return False
